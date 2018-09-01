@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel='shortcut icon' href='/whongbin.cn.ico'> 
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+        <meta name="author" content="whongbin">
+        <meta name="generator" content="KodCloud">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="Cache-Control" content="no-siteapp">
+        <meta name="description" content="###PAGETITLE###站点地图">
+        <meta name="keywords" content="###PAGETITLE###,站点地图,sitemap">
+        <title>###PAGETITLE### | 站点地图</title>
+        <link href="//www.whongbin.cn/static/site/css/sitemap.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+        <div class="container">
+            <h1 class="page-title">
+                <a href="/" target="_blank">###SITEMAPTITLE###</a>
+            </h1>
+            <h2 class="section-title">文章 / Article</h2>
+            <ul class="sitemap-lists post-lists clear-fix">
+                ###ARTICLELISTS###
+            </ul>
+            <h2 class="section-title">分类 / Category</h2>
+            <ul class="sitemap-lists category-lists clear-fix">
+                ###CATEGORYLISTS###
+            </ul>
+            <h2 class="section-title">关键字 / Keywords</h2>
+            <ul class="sitemap-lists tag-lists clear-fix">
+                ###TAGLIST###
+            </ul>
+        </div>
+        <!-- .container -->
+        <footer class="page-footer">
+            <span>Copyright © 2018 whongbin.cn | <a href="//www.miitbeian.gov.cn/" target="_blank">###ICPNUMBER###</a> | 最后更新于 ###CREATETIME###</span>
+        </footer>
+    </body>
+
+</html>

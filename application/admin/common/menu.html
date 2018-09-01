@@ -1,0 +1,88 @@
+        <nav class="page-sidebar" id="sidebar">
+            <div id="sidebar-collapse">
+                <div class="admin-block d-flex">
+                    <div>
+                        <img src="{$Request.session.useravatar}" width="45px" />
+                    </div>
+                    <div class="admin-info">
+                        <div class="font-strong">{$Request.session.username}</div><small>管理员</small></div>
+                </div>
+                <ul class="side-menu metismenu" id="side-menu">
+                    <li>
+                        <a href="{:url('index/index')}"><i class="sidebar-item-icon fa fa-dashboard"></i>
+                            <span class="nav-label">仪表板</span>
+                        </a>
+                    </li>
+                    <li class="heading">系统管理</li>
+                    <li>
+                        <a href="javascript:;"><i class="sidebar-item-icon fa fa-edit"></i>
+                            <span class="nav-label">文章管理</span><i class="fa fa-angle-left arrow"></i>
+                        </a>
+                        <ul class="nav-2-level collapse">
+                            <li>
+                                <a href="{:url('article/lst')}">文章列表</a>
+                            </li>
+                            <li>
+                                <a href="{:url('article/add')}">新建文章</a>
+                            </li>
+                            <li>
+                                <a href="{:url('cate/lst')}">分类管理</a>
+                            </li>
+                            <li>
+                                <a href="{:url('tags/lst')}">标签管理</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{:url('words/index')}"><i class="sidebar-item-icon fa fa-code"></i>
+                            <span class="nav-label">碎言管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="sidebar-item-icon fa fa-photo"></i>
+                            <span class="nav-label">相册管理</span><i class="fa fa-angle-left arrow"></i></a>
+                        <ul class="nav-2-level collapse">
+                            <li>
+                                <a href="{:url('album/lst')}">相册列表</a>
+                            </li>
+                            <li>
+                                <a href="{:url('album/add')}">新建相册</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><i class="sidebar-item-icon fa fa-link"></i>
+                            <span class="nav-label">友情链接</span><i class="fa fa-angle-left arrow"></i></a>
+                        <ul class="nav-2-level collapse">
+                            <li>
+                                <a href="{:url('links/lst')}">友链管理</a>
+                            </li>
+                            <li>
+                                <a href="{:url('links/add')}">添加友链</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{:url('comment/index')}"><i class="sidebar-item-icon fa fa-comment"></i>
+                            <span class="nav-label">评论管理</span>
+                        </a>
+                    </li>
+                    <li class="heading">系统配置</li>
+                    <li>
+                        <a href="{:url('config/config')}"><i class="sidebar-item-icon fa fa-gears"></i>
+                            <span class="nav-label">系统配置</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:url('calendar/index')}"><i class="sidebar-item-icon fa fa-calendar"></i>
+                            <span class="nav-label">事件日历</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:url('user/logout')}"><i class="sidebar-item-icon fa fa-power-off"></i>
+                            <span class="nav-label">退出登录</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>

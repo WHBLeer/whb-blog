@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>编辑博客 | {$conf.WEB_NAME}-管理后台</title>
+    {include file="../application/admin/common/layout.html" /}
+    <link rel="stylesheet" href="__EDITORMD__/css/editormd.css">
+    <link href="https://cdn.bootcss.com/select2/4.0.6-rc.1/css/select2.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/select2/4.0.6-rc.1/js/select2.min.js"></script>
+    <script src="https://cdn.bootcss.com/select2/4.0.6-rc.1/js/i18n/zh-CN.js"></script>
+    <style type="text/css">
+        #viewPic {cursor: pointer;min-height: 118px;padding: 9px}
+        #viewPic span {line-height: 100px;padding: 0 20px;}
+        #viewPic img {max-height: 100px;}
+    </style>
+</head>
+
+<body class="fixed-navbar has-animation fixed-layout">
+    <div class="page-wrapper">
+        <!-- START HEADER-->
+        {include file="../application/admin/common/header.html" /}
+        <!-- END HEADER-->
+        <!-- START SIDEBAR-->
+        {include file="../application/admin/common/menu.html" /}
+        <!-- END SIDEBAR-->
+        <div class="content-wrapper">
+            <div class="page-content fade-in-up">
+                <div class="ibox">
+                    <div class="ibox-head">
+                        <div class="ibox-title">编辑博客文章</div>
+                    </div>
+                    <div class="ibox-body">
+                        <form class="form-horizontal" action="" id="form-sample-1" enctype="multipart/form-data" method="post" novalidate="novalidate">
+                            <input type="hidden" name="id"  value="{$article.id}">
+                            <div class="form-group row">
+                                <label class="col-sm-1 col-form-label text-right">标题</label>
+                                <div class="col-sm-11">
+                                    <input class="form-control" type="text" name="title" value="{$article.title}" >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-1 col-form-label text-right">作者</label>
+                                <div class="col-sm-11">
+                                    <input class="form-control" type="text" name="author" value="{$article.author}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-1 col-form-label text-right">栏目</label>
+                                <div class="col-sm-11">
+                                    <select class="form-control" name="cate">
+                                        <option value="">选择栏目</option>
+                                        {volist name="cateres" id="vo"}
+                                        <option {if condition="$vo['id'] eq $article['cate']"} selected="selected"{/if} value="{$vo.id}" ">{$vo.catename}</option>
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group row">
+                                <label class="col-sm-1 col-form-label text-right">标签</label>
+                                <div class="col-sm-11">
+                                    <select class="form-control select2" name="tags[]" multiple="multiple">
+                                        <option value="">选择标签</option>
+                                        {volist name="tags" id="vo"}
+                                        <option value="{$vo.id}">{$vo.tagname}</option>
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div> -->
+                            <div class="form-group row">
+                                <label class="col-sm-1 col-form-label text-right">关键字</label>
+                                <div class="col-sm-11">
+                                    <input class="form-control" type="text" name="keywords" value="{$article.keywords}" >
+                                </div>
+                            </div>
+                            <!-- <div class="form-group row">
+                                <label class="col-sm-1 col-form-label text-right">推荐</label>
+                                <div class="col-sm-11" style="margin-top: 5px;">
+                                    <div class="check-list">
+                                        <label class="ui-checkbox">
+                                            <input type="checkbox" name="state" value="1" {if condition="$article['state'] eq 1"} checked="checked" {/if}>
+                                            <span class="input-span"></span>是
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="form-group row">
+                                <label class="col-sm-1 col-form-label text-right">简介</label>
+                                <div class="col-sm-6">
+                                    <textarea class="form-control" rows="6" name="desc">{$article.desc}</textarea>
+                                </div>
+                                <label class="col-sm-1 col-form-label text-right">封面图</label>
+                                <div class="col-sm-4">
+                                    <div class="form-control" title="点击选择图片上传" id="viewPic" onclick="document.getElementById('uploadPic').click();">
+                                        {if condition="$article['pic'] neq '' "}
+                                            <img src="{$article.pic}" >
+                                        {else /}
+                                            <span id="noPic">暂无图片:请点击此区域上传图片</span>
+                                        {/if}
+                                    </div>
+                                    <input type="file" name="pic" id="uploadPic" onchange="showPreview(this)" style="display: none">
+                                    <input type="hidden" name="oldpic" value="{$article.pic}" style="display: none">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-1 col-form-label text-right">博客内容</label>
+                                <div class="col-sm-11">
+                                    <div id="whongbin-content">
+                                        <textarea name="mdcontent">{$article.mdcontent}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-11 ml-sm-auto">
+                                    <button class="btn btn-info" onclick="ajaxRequestImg('{:url(\'article/edit\')}','form-sample-1','uploadPic');return false;">现在提交</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- END PAGE CONTENT-->
+            {include file="../application/admin/common/footer.html" /}
+        </div>
+    </div>
+    <!-- BEGIN PAGA BACKDROPS-->
+    <div class="sidenav-backdrop backdrop"></div>
+    <div class="preloader-backdrop">
+        <div class="page-preloader">Loading</div>
+    </div>
+    <!-- END PAGA BACKDROPS-->
+    <!-- CORE PLUGINS-->
+    <script src="__ADMINRES__/vendors/popper.js/dist/umd/popper.min.js" type="text/javascript"></script>
+    <script src="__ADMINRES__/vendors/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="__ADMINRES__/vendors/metisMenu/dist/metisMenu.min.js" type="text/javascript"></script>
+    <script src="__ADMINRES__/vendors/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS-->
+    <script src="__ADMINRES__/vendors/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+    <!-- CORE SCRIPTS-->
+    <script src="__ADMINRES__/js/app.min.js" type="text/javascript"></script>
+    <script src="__EDITORMD__/editormd.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS-->
+    <script type="text/javascript">
+        var testEditor;
+        $(function() {
+            testEditor = editormd("whongbin-content", {
+                path                : "__EDITORMD__/lib/",
+                width               : "100%",
+                height              : 700,
+                toc                 : true,
+                todoList            : true,
+                placeholder: '输入文章内容',
+                toolbarAutoFixed    : false,
+                saveHTMLToTextarea  : false,
+                emoji               : true,
+                toolbarIcons        : ['undo', 'redo', 'bold', 'del', 'italic', 'quote', 'uppercase', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'list-ul', 'list-ol', 'hr', 'link', 'reference-link', 'image', 'code', 'code-block', 'table', 'emoji', 'html-entities', 'watch', 'preview', 'search', 'fullscreen'],
+                imageUpload         : true,
+                imageFormats        : ["jpg","jpeg","gif","png","bmp","webp"],
+                imageUploadURL      : "{:url('article/editorMdUpload')}"
+            });
+
+            $("#form-sample-1").validate({
+                rules: {
+                    name: {
+                        minlength: 2,
+                        required: !0
+                    },
+                    email: {
+                        required: !0,
+                        email: !0
+                    },
+                    url: {
+                        required: !0,
+                        url: !0
+                    },
+                    number: {
+                        required: !0,
+                        number: !0
+                    },
+                    min: {
+                        required: !0,
+                        minlength: 3
+                    },
+                    max: {
+                        required: !0,
+                        maxlength: 4
+                    },
+                    password: {
+                        required: !0
+                    },
+                    password_confirmation: {
+                        required: !0,
+                        equalTo: "#password"
+                    }
+                },
+                errorClass: "help-block error",
+                highlight: function(e) {
+                    $(e).closest(".form-group.row").addClass("has-error")
+                },
+                unhighlight: function(e) {
+                    $(e).closest(".form-group.row").removeClass("has-error")
+                },
+            });
+            $('.select2').select2({
+                placeholder: '请选择标签'
+            });
+
+            {$select2}
+
+        });
+
+        function showPreview(source) {
+            var file = source.files[0];
+            if(window.FileReader) {
+                var fr = new FileReader();
+                var viewPic  = document.getElementById('viewPic');
+                fr.onloadend = function(e) {
+                    viewPic.innerHTML = '';
+                    viewPic.innerHTML = '<img src="'+e.target.result+'" style="max-height: 100px">';
+                };
+                fr.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+
+</html>

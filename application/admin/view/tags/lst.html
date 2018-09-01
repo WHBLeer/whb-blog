@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>标签列表 | {$conf.WEB_NAME}-管理后台</title>
+    {include file="../application/admin/common/layout.html" /}
+    <!-- PAGE LEVEL STYLES-->
+    <link href="__ADMINRES__/vendors/DataTables/datatables.min.css" rel="stylesheet" />
+    <link href="__ADMINRES__/css/pages/pagination.css" rel="stylesheet" />
+</head>
+
+<body class="fixed-navbar has-animation fixed-layout">
+    <div class="page-wrapper">
+        <!-- START HEADER-->
+        {include file="../application/admin/common/header.html" /}
+        <!-- END HEADER-->
+        <!-- START SIDEBAR-->
+        {include file="../application/admin/common/menu.html" /}
+        <!-- END SIDEBAR-->
+        <div class="content-wrapper">
+            <div class="page-content fade-in-up">
+                <div class="ibox">
+                    <div class="ibox-head">
+                        <div class="ibox-title">标签列表</div>
+                        <button type="button" tooltip="添加栏目" class="btn btn-sm btn-success" onClick="javascript:window.location.href = '{:url('tags/add')}'"> <i class="fa fa-plus"></i> 添加标签</button>
+                    </div>
+                    <div class="ibox-body">
+                        <div class="row">
+                            {volist name="list"  id="vo"}
+                            <div class="col-sm-3" style="margin: 10px 0;">
+                                <span class="label label-info" style="margin: 0 15px">{$vo.tagname}</span>
+                                <a href="{:url('tags/edit',array('id'=>$vo['id']))}" class="label label-default"><i class="fa fa-pencil font-14"></i></a></span>
+                                <a href="javascript:void(0);" onclick="ajaxDelete('{:url(\'tags/del\',array(\'id\'=>$vo[\'id\']))}')" class="label label-default" ><i class="fa fa-trash font-14"></i></a>
+                            </div>
+                            {/volist}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PAGE CONTENT-->
+            {include file="../application/admin/common/footer.html" /}
+        </div>
+    </div>
+    <!-- BEGIN PAGA BACKDROPS-->
+    <div class="sidenav-backdrop backdrop"></div>
+    <div class="preloader-backdrop">
+        <div class="page-preloader">Loading</div>
+    </div>
+    <!-- END PAGA BACKDROPS-->
+    <!-- CORE PLUGINS-->
+    <script src="__ADMINRES__/vendors/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="__ADMINRES__/vendors/popper.js/dist/umd/popper.min.js" type="text/javascript"></script>
+    <script src="__ADMINRES__/vendors/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="__ADMINRES__/vendors/metisMenu/dist/metisMenu.min.js" type="text/javascript"></script>
+    <script src="__ADMINRES__/vendors/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS-->
+    <!-- CORE SCRIPTS-->
+    <script src="__ADMINRES__/js/app.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS-->
+</body>
+
+</html>

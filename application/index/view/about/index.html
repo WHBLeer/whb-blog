@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>{$about.title} | {$conf.WEB_NAME}</title>
+        <meta name="description" content="{$about.desc}">
+        <meta name="keywords" content="{$about.keywords}">
+        {include file="../application/index/common/layout.html" /}
+        
+        <link rel="stylesheet" id="main-style-css" href="__INDEXRES__/css/index.css" type="text/css" media="all">
+        <script type="text/javascript">
+            $(document).ready(function(e) {
+                $(".single-content img").each(function(){
+                    $(this).parent().parent('p').css("text-align","center");
+                });
+                $("#article-url").text(window.location.href);
+            });
+        </script>
+    </head>
+    
+    <body class="post-template-default single single-post postid-1619 single-format-standard">
+        <!-- 顶部导航栏 start-->
+        {include file="../application/index/common/header.html" /} 
+        <!-- 顶部导航栏 end-->
+        <!-- #top-header -->
+        <article id="post-{$about.id}" class="post-{$about.id} post type-post status-publish format-standard has-post-thumbnail hentry " itemscope="" itemtype="http://schema.org/Article">
+            <header class="entry-header">
+                <!-- <h1 class="entry-title">{$about.title}</h1> -->
+                <div class="header-info">
+                    <span class="article-auth">
+                        <!-- 文章类型 -->
+                        <!-- 文章作者 -->
+                        <a href="{:url('about/index')}" rel="nofollow" target="_blank">
+                            <i class="fa fa-user" aria-hidden="true"></i> {$conf.AUTHOR}
+                        </a>
+                    </span>
+                    <!-- 日期、阅读量、评论、编辑 -->
+                    <span class="article-date">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <time datetime="2018-08-05 06:08:58" itemprop="datePublished">{$about.time|date="Y-m-d",###}</time>
+                    </span>
+                    <span class="article-views">
+                        <i class="fa fa-eye" aria-hidden="true"></i> {$about.click}
+                    </span>
+                    <span class="article-views">
+                        <i class="fa fa-heart" aria-hidden="true"></i> {$about.likes}
+                    </span>
+                    <span class="article-comment">
+                        <a href="#comments" class="-"><i class="fa fa-comments" aria-hidden="true"></i> {$about.id|comment_total}</a>
+                    </span>
+                    <span class="article-edit" data-no-instant="">
+                    </span>
+                </div>
+            </header>
+            <!-- .entry-header -->
+            <!-- 文章摘要 -->
+            <!-- 正文 -->
+            <div class="entry-content" itemprop="articleBody">
+                <div class="single-content">
+                    <!-- 文章内容 -->
+                    {$about.content}
+                </div>
+            </div>
+
+            <!-- .entry-content -->
+            <!-- 点赞、分享、打赏组件 -->
+            <div class="social-main">
+                <div class="like favorite" data-action="ding" data-id="{$about.id}">
+                    <span class="likeHeart" rel="like"></span>
+                    <span class="count">{$about.likes}</span>人点赞
+                </div>
+                <div class="reward">
+                    <i class="fa fa-gift" aria-hidden="true">
+                    </i>打赏
+                    <img class="reward-qrcode" src="/static/site/images/wxpay.png">
+                </div>
+            </div>
+            <div class="content-extras clear-fix" style="background: #00000010;border-radius: 2px;-webkit-box-shadow: 0 0 2.6875rem rgba(0,0,0,0.15);-moz-box-shadow: 0 0 2.6875rem rgba(0,0,0,0.15);box-shadow: 0 0 2.6875rem rgba(0,0,0,0.15);font-size: 17px;text-align: center;">
+                <!-- 上下文章 -->
+                <p class="single-copyright">
+                    【醒目的大字】：如果您对本站有什么建议或意见请移步到[<a href="{:url('index/about/index')}#comment" style="color: #cd5c5c;">关于我的评论</a>]或[<a href="mailto:{$conf.ADMIN_EMAIL}" style="color: #cd5c5c;">发送邮件</a>]给我，我会尽快改进。
+                </p>
+            </div>
+        </article>
+        <!-- .width-short -->
+        <div id="comments" class="comments-area">
+            <div id="respond" class="comment-respond">
+                <div class="comment-reply-title">
+                    <span>发表评论</span>
+                    <a rel="nofollow" id="cancel-comment-reply-link" href="javascript:;" hidden="" data-no-instant="">
+                        <i class="fa fa-times" aria-hidden="true"></i>取消回复
+                    </a>
+                </div>
+                <!-- comment-reply-title -->
+                <form action="{:url('article/insertComment')}" method="post" id="commentform">
+                    <div class="comment-author-welcome"></div>
+                    <!-- comment-author-welcome -->
+                    <div id="comment-author-info">
+                        <div class="comment-form-author">
+                            <label for="author">昵称（必填）</label>
+                            <input type="text" name="nickname" id="author" class="commenttext" value="" tabindex="1" required="">
+                        </div>
+                        <div class="comment-form-email">
+                            <label for="email">邮箱（必填）</label>
+                            <input type="email" name="email" id="email" class="commenttext" value="" tabindex="2" required="">
+                        </div>
+                        <div class="comment-form-url">
+                            <label for="url">网址</label>
+                            <input type="text" name="url" id="url" class="commenttext" value="" tabindex="3">
+                        </div>
+                    </div>
+                    <div class="comment-form-comment">
+                        <!-- 主体文章 -->
+                        <textarea id="comment" name="comment" rows="4" tabindex="4" placeholder="" required=""></textarea>
+                        <div class="comment-form-tools" style="display: block;">
+                            <span data-action="emoji" title="插入表情">
+                                <i class="fa fa-smile-o" aria-hidden="true"></i>表情
+                            </span>
+                            <span data-action="pic" title="插入图片">
+                                <i class="fa fa-picture-o" aria-hidden="true"></i>图片
+                            </span>
+                            <span data-action="url" title="插入超链接">
+                                <i class="fa fa-link" aria-hidden="true"></i>链接
+                            </span>
+                            <!-- <span data-action="code" title="插入代码段">
+                                <i class="fa fa-code" aria-hidden="true"></i>代码
+                            </span> -->
+                            <span data-action="close" style="float: right;" title="关闭工具条">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <p id="comment-tips"></p>
+                    <div class="comment-form-submit">
+                        <input type="hidden" name="article" value="{$about.id}" id="comment_post_ID">
+                        <input type="hidden" name="parent" id="comment_parent" value="0">
+                        <span class="comment-mail-notify">
+                            <label class="mk-checkbox">
+                                <input type="checkbox" name="notify" id="comment_mail_notify" value="1" checked="">
+                                <div><div></div></div>接收回复邮件通知
+                            </label>
+                        </span>
+                        <button id="submit" type="submit" tabindex="5">提交评论</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- 通用底部 start-->
+        {include file="../application/index/common/footer.html" /}
+        <!-- 通用底部 end-->
+    </body>
+
+</html>

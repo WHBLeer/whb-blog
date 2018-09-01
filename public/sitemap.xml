@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8'?>
+	<urlset
+		xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'
+		xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+		xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9
+		http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd'>
+		<url>
+			<loc>https://www.whongbin.cn</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-09-01 00:00:01</lastmod>
+			<changefreq>Always</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/1.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-04-11 14:52:44</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/23.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-08-27 15:30:33</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/24.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-08-29 11:51:41</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/25.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-08-29 15:16:13</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/17.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-08-15 17:32:37</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/2.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-04-11 14:55:40</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/3.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-04-11 14:59:01</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/4.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-04-11 15:03:47</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/15.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-08-15 10:52:19</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/16.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-08-15 11:05:51</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/18.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-08-16 10:13:08</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/8.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-04-11 15:26:54</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/9.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-07-19 17:43:45</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/10.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-05-20 08:00:00</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/11.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-08-13 15:03:30</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/12.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-08-14 13:56:50</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/13.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-08-14 14:23:51</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/14.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-08-14 17:18:17</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/19.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-08-18 17:20:56</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/20.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-08-21 16:56:54</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/21.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-08-26 16:36:14</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/22.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-08-27 14:09:19</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+		<url>
+			<loc>https://www.whongbin.cn/index/article/detail/id/26.html</loc>
+			<priority>0.9</priority>
+			<lastmod>2018-08-30 14:42:41</lastmod>
+			<changefreq>daily</changefreq>
+		</url>
+	</urlset>

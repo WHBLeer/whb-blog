@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>{$article.title} | {$conf.WEB_NAME}</title>
+        <meta name="description" content="{$article.desc}">
+        <meta name="keywords" content="{$article.keywords}">
+        {include file="../application/index/common/layout.html" /}
+        <link rel="stylesheet" id="main-style-css" href="__INDEXRES__/css/index.css" type="text/css" media="all">
+        <script type="text/javascript">
+            $(document).ready(function(e) {
+                $(".single-content img").each(function(){
+                    $(this).parent().parent('p').css("text-align","center");
+                });
+                $("#article-url").text(window.location.href);
+            });
+        </script>
+    </head>
+    
+    <body class="post-template-default single single-post postid-1619 single-format-standard">
+        <!-- 顶部导航栏 start-->
+        {include file="../application/index/common/header.html" /} 
+        <!-- 顶部导航栏 end-->
+        <!-- #top-header -->
+        <article id="post-{$article.id}" class="post-{$article.id} post type-post status-publish format-standard has-post-thumbnail hentry " itemscope="" itemtype="http://schema.org/Article">
+            <header class="entry-header">
+                <h1 class="entry-title">{$article.title}</h1>
+                <div class="header-info">
+                    <span class="article-auth">
+                        <!-- 文章类型 -->
+                        <!-- 文章作者 -->
+                        <a href="{:url('about/index')}" rel="nofollow" target="_blank">
+                            <i class="fa fa-user" aria-hidden="true"></i> {$conf.AUTHOR}
+                        </a>
+                    </span>
+                    <!-- 日期、阅读量、评论、编辑 -->
+                    <span class="article-date">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <time datetime="2018-08-05 06:08:58" itemprop="datePublished">{$article.time|word_time}</time>
+                    </span>
+                    <span class="article-views">
+                        <i class="fa fa-eye" aria-hidden="true"></i> {$article.click}
+                    </span>
+                    <span class="article-comment">
+                        <a href="#comments" class="-"><i class="fa fa-comments" aria-hidden="true"></i> {$article.id|comment_total}</a>
+                    </span>
+                    <span class="article-edit" data-no-instant="">
+                    </span>
+                </div>
+            </header>
+            <!-- .entry-header -->
+            <!-- 文章摘要 -->
+            <!-- 正文 -->
+            <div class="entry-content" itemprop="articleBody">
+                <div class="single-content" style="padding: 0 20px;">
+                    <!-- 文章内容 -->
+                    {$article.content}
+                </div>
+                <div class="content-extras clear-fix">
+                    <!-- 版权信息 -->
+                    <p class="single-copyright">
+                        【本文链接】：<span id="article-url"></span><br/>
+                        【转载声明】：{$conf.COPYRIGHT_WORD}
+                    </p>
+                    <!-- 文章标签 -->
+                    <p class="single-tags">
+                        <?php
+                            $keywords=str_replace('，',',', $article['keywords']);
+                            $arr=explode(',', $keywords);
+                            foreach ($arr as $k=>$v) {
+                                echo '<i class="fa fa-tag" aria-hidden="true"></i>';
+                                echo "<a href='/index/search/index.html?keywords=$v'>$v</a>";
+                            }
+                        ?>
+                        {volist name="article.tags"  id="tag"}
+                        <i class="fa fa-tag" aria-hidden="true"></i>
+                        <a href="{:url('article/tags',array('id'=>$tag['id']))}" rel="tag">{$tag.tagname}</a>
+                        {/volist}
+                    </p>
+                </div>
+                <!-- content-extras -->
+                <div class="content-extras clear-fix">
+                    <!-- 上下文章 -->
+                    <p class="single-copyright">
+                        【上一篇】：{if condition="$prev eq 'no_result'"}<a href="javascript:void(0);">没有了！</a>{else /}<a href="{:url('index/Article/detail',array('id'=>$prev['id']))}">{$prev.title}</a>{/if}<br/>
+                        【下一篇】：{if condition="$next eq 'no_result'"}<a href="javascript:void(0);">没有了！</a>{else /}<a href="{:url('index/Article/detail',array('id'=>$next['id']))}">{$next.title}</a>{/if}
+                    </p>
+                </div>
+            </div>
+            <!-- .entry-content -->
+            <!-- 点赞、分享、打赏组件 -->
+            <div class="social-main">
+                <div class="like favorite" data-action="ding" data-id="1619">
+                    <span class="likeHeart" rel="like"></span>
+                    <span class="count">{$article.likes}</span>人点赞
+                </div>
+                <div class="reward">
+                    <i class="fa fa-gift" aria-hidden="true">
+                    </i>打赏
+                    <img class="reward-qrcode" src="/static/site/images/wxpay.png">
+                </div>
+            </div>
+        </article>
+        <!-- .width-short -->
+        <div id="comments" class="comments-area">
+            <div id="respond" class="comment-respond">
+                <div class="comment-reply-title">
+                    <span>发表评论</span>
+                    <a rel="nofollow" id="cancel-comment-reply-link" href="javascript:;" hidden="" data-no-instant="">
+                        <i class="fa fa-times" aria-hidden="true"></i>取消回复
+                    </a>
+                </div>
+                <!-- comment-reply-title -->
+                <form action="" method="post" id="commentform">
+                    <div class="comment-author-welcome"></div>
+                    <!-- comment-author-welcome -->
+                    <div id="comment-author-info">
+                        <div class="comment-form-author">
+                            <label for="author">昵称（必填）</label>
+                            <input type="text" name="nickname" id="author" class="commenttext" value="" tabindex="1" required="">
+                        </div>
+                        <div class="comment-form-email">
+                            <label for="email">邮箱（必填）</label>
+                            <input type="email" name="email" id="email" class="commenttext" value="" tabindex="2" required="" placeholder="aa@bb.cc">
+                        </div>
+                        <div class="comment-form-url">
+                            <label for="url">网址</label>
+                            <input type="text" name="url" id="url" class="commenttext" value="" tabindex="3" placeholder="http://">
+                        </div>
+                    </div>
+                    <div class="comment-form-comment">
+                        <textarea id="comment" name="comment" rows="4" tabindex="4" required="" placeholder="你的建议，就是我的动力~"></textarea>
+                        <div class="comment-form-tools" style="display: block;">
+                            <span data-action="emoji" title="插入表情"><i class="fa fa-smile-o" aria-hidden="true"></i>表情</span>
+                            <span data-action="pic" title="插入图片"><i class="fa fa-picture-o" aria-hidden="true"></i>图片</span>
+                            <span data-action="url" title="插入超链接"><i class="fa fa-link" aria-hidden="true"></i>链接</span>
+                            <!-- <span data-action="code" title="插入代码段">
+                                <i class="fa fa-code" aria-hidden="true"></i>代码
+                            </span> -->
+                            <span data-action="close" style="float: right;" title="关闭工具条"><i class="fa fa-times" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                    <p id="comment-tips"></p>
+                    <div class="comment-form-submit">
+                        <input type="hidden" name="article" value="{$article.id}" id="comment_post_ID">
+                        <input type="hidden" name="parent" id="comment_parent" value="0">
+                        <span class="comment-mail-notify">
+                            <label class="mk-checkbox">
+                                <input type="checkbox" value="{$conf.COMMENT_SEND_EMAIL}" checked="" name="notify" id="comment_mail_notify">
+                                <div><div></div></div>接收回复邮件通知
+                            </label>
+                        </span>
+                        <button id="submit" type="submit" tabindex="5">提交评论</button>
+                    </div>
+                </form>
+            </div>
+            <!-- respond -->
+            <!-- 评论列表 -->
+            
+            <ol class="comment-list">
+            {volist name="comments"  id="comment"}
+                <li class="comment even thread-even depth-1" id="comment-{$comment.id}" data-no-instant="">
+                    <div id="div-comment-{$comment.id}" class="comment-body">
+                        <div class="comment-avatar-area">
+                            <img alt="#" src="{$comment.avatar}" class="no-error avatar avatar-50 photo" height="50" width="50">
+                        </div>
+                        <div class="comment-content-area">
+                            <div class="comment-content-user">
+                                <span class="comment-auth">{if condition="$comment['nickname'] eq ''"}匿名{else /}{$comment.nickname}{/if}</span>
+                                <!-- <span class="level level-###LV###" title="###LEVEL###">###LEVEL###</span> -->
+                            </div>
+                            <!-- comment-info -->
+                            <div class="comment-content-text">
+                                <p>{$comment.comment}</p>
+                            </div>
+                            <div class="comment-content-info" data-no-instant="">
+                                <span><a href="#comment-{$comment.id}">#1</a></span>
+                                <span>{$comment.time|word_time}</span>
+                                <span>
+                                    <a rel="nofollow" class="comment-reply-link" onclick="return addComment.moveForm( &quot;div-comment-{$comment.id}&quot;, &quot;{$comment.id}&quot;, &quot;respond&quot;, &quot;{$article.id}&quot; )" aria-label="回复给#{$comment.nickname}">回复</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    {if condition="isset($comment['childs']) eq 1"}
+                    <ul class="children">
+                        {volist name="comment.childs" id="child"}
+                        <li class="comment byuser comment-author-###NICKNAME#### bypostauthor even depth-2 parent" id="comment-{$child.id}" data-no-instant="">
+                            <div id="div-comment-{$child.id}" class="comment-body">
+                                <div class="comment-avatar-area">
+                                    <img alt="{$child.nickname}" src="{$child.avatar}" class="no-error avatar avatar-50 photo" height="50" width="50">
+                                </div>
+                                <div class="comment-content-area">
+                                    <div class="comment-content-user">
+                                        <span class="comment-auth">{$child.nickname}</span>
+                                        <!-- <span class="level level-###LV###" title="###LEVEL###">###LEVEL###</span> -->
+                                    </div>
+                                    <div class="comment-content-text">
+                                        <p>
+                                            <a class="comment-at" href="#comment-{$comment.id}">@{$comment.nickname}</a>
+                                            {$child.comment}
+                                        </p>
+                                    </div>
+                                    <div class="comment-content-info" data-no-instant="">
+                                        <span>{$child.time|word_time}</span>
+                                        <!-- <span>
+                                            <a rel="nofollow" class="comment-reply-link" onclick="return addComment.moveForm( &quot;div-comment-{$child.id}&quot;, &quot;{$comment.id}&quot;, &quot;respond&quot;, &quot;{$article.id}&quot; )" aria-label="回复给#{$child.nickname}">回复</a>
+                                        </span> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {/volist}
+                    </ul>
+                    {/if}
+                </li>
+            {/volist}
+            </ol>
+
+        </div>
+        <div id="article-share" class="headroom anim-trans headroom--not-bottom headroom--not-top headroom--pinned"
+        style="display: block;">分享
+            <div class="share-item" data-site="weixin" title="分享到微信">
+                <i class="fa fa-weixin"></i>微信
+            </div>
+            <div class="share-item" data-site="weibo" title="分享到新浪微博">
+                <i class="fa fa-weibo"></i>微博
+            </div>
+            <div class="share-item" data-site="qq" title="分享给QQ好友">
+                <i class="fa fa-qq"></i>QQ
+            </div>
+        </div>
+        <!-- <div id="article-menu" data-automenu="">
+            <ul style="display: block;">
+                <li class="menu-level-item menu-level-one" name="title-1">
+                    <a href="https://mkblog.cn/1619/#title-1" title="抓接口" class="anim-trans">
+                        抓接口
+                    </a>
+                </li>
+                <li class="menu-level-item menu-level-one active" name="title-2">
+                    <a href="https://mkblog.cn/1619/#title-2" title="写代码" class="anim-trans">
+                        写代码
+                    </a>
+                </li>
+                <li class="menu-level-item menu-level-one" name="title-3">
+                    <a href="https://mkblog.cn/1619/#title-3" title="一点遗憾" class="anim-trans">
+                        一点遗憾
+                    </a>
+                </li>
+                <li class="menu-level-item menu-level-one" name="title-4">
+                    <a href="https://mkblog.cn/1619/#title-4" title="课后练习" class="anim-trans">
+                        课后练习
+                    </a>
+                </li>
+            </ul>
+        </div> -->
+        <!-- 通用底部 start-->
+        {include file="../application/index/common/footer.html" /}
+        <!-- 通用底部 end-->
+    </body>
+
+</html>

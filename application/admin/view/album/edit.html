@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>编辑相册 | {$conf.WEB_NAME}-管理后台</title>
+    {include file="../application/admin/common/layout.html" /}
+     <style> 
+        #viewPic {cursor: pointer;min-height: 90px;}
+        /*#viewPic span {line-height: 100px;padding: 0 20px;}*/
+        #viewPic img {max-height: 90px;}
+        /*点击添加图片按钮div包裹*/
+        .addbtn_wrap{position: relative;}
+ 
+        /*添加图片按钮*/
+        .addbtn{position: absolute;}
+        .pictures{width: 100px;position: absolute;top: 5px;opacity: 0;}
+
+        /*所有图片div包裹*/
+        .img_wrap{width:100%;min-height: 145px;margin-top: 40px;float: left;border: 1px solid #ddd;border-radius: 1px;}
+ 
+        .pic_wrap{width: 23%;height: 134px;float: left;position: relative;margin: 9px;    border: 1px solid #ddd;border-radius: 3%;padding: 2px;}
+ 
+        .img{width: 95%;height: 130px;float: left;}
+ 
+        .delete{width: 100%;height: 130px;position: absolute;display: none;border-radius: 6px;}
+ 
+        .delete img{float: right;height: 13px;margin-right: 5px;opacity: 0.3;}
+ 
+    </style>
+
+</head>
+
+<body class="fixed-navbar has-animation fixed-layout">
+    <div class="page-wrapper">
+        <!-- START HEADER-->
+        {include file="../application/admin/common/header.html" /}
+        <!-- END HEADER-->
+        <!-- START SIDEBAR-->
+        {include file="../application/admin/common/menu.html" /}
+        <!-- END SIDEBAR-->
+        <div class="content-wrapper">
+            <div class="page-content fade-in-up">
+                <div class="ibox">
+                    <div class="ibox-head">
+                        <div class="ibox-title">编辑相册 <code style="font-size: 95%;"><b>Tips:<small>请上传最多100张照片，大小在100KB—100MB之间。</small></b></code></div>
+                    </div>
+                    <div class="ibox-body">
+                        <form class="form-horizontal" action="" id="form-sample-1" enctype="multipart/form-data" method="post" novalidate="novalidate">
+                            <input type="hidden" name="id"  value="{$album.id}">
+                            <div class="form-group row">
+                                <label class="col-sm-1 col-form-label text-right">相册名称</label>
+                                <div class="col-sm-7">
+                                    <input class="form-control" type="text" name="albumname" id="albumname" value="{$album.albumname}">
+                                </div>
+                                <label class="col-sm-1 col-form-label text-right" title="仅管理员可查看">仅管理员</label>
+                                <div class="col-sm-3" style="margin-top: 5px;">
+                                    <div class="check-list">
+                                        <label class="ui-checkbox">
+                                            <input type="checkbox" name="admin" value="1"  id="admin" {if condition="$album['admin'] neq 1 "}checked="checked"{/if}>
+                                            <span class="input-span"></span>是
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-1 col-form-label text-right">相册简介</label>
+                                <div class="col-sm-7">
+                                    <textarea class="form-control" rows="5" name="desc">{$album.desc}</textarea  id="desc">
+                                </div>
+                                <label class="col-sm-1 col-form-label text-right">封面图</label>
+                                <div class="col-sm-3">
+                                    <div class="form-control" title="点击选择图片上传" id="viewPic" onclick="document.getElementById('uploadPic').click();">
+                                        {if condition="$album['cover'] neq '' "}
+                                            <img src="{$album.cover}" >
+                                        {else /}
+                                            <span id="noPic">暂无图片:请点击此区域上传图片</span>
+                                        {/if}
+                                    </div>
+                                    <input type="file" name="cover" id="uploadPic" onchange="showPreview(this)" style="display: none">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-1 col-form-label text-right">相册内容</label>
+                                <div class="col-sm-11">
+                                    <!--file包裹-->
+                                    <div class="addbtn_wrap">
+                                        <input type="button" class="btn btn-primary addbtn" value="点击添加图片">
+                                        <input type="file" class="pictures" name="pictures[]" id="file1" style="z-index: 1" onchange="getPhoto(this)">
+                                    </div>
+                                    <!--图片包裹-->
+                                    <div class="img_wrap">
+                                        {volist name="pictures"  id="pic"}
+                                            <div class="pic_wrap" id="showPic{$pic.id}" onmouseover="overDelete(this)" onmouseleave="leaveDelete(this)">
+                                                <img  src="{$pic.pic_init}" class="img img-rounded">
+                                                <div class="delete">
+                                                    <img src="/static/admin/assets/img/delete.png" onclick="deletePic(this)">
+                                                </div>
+                                            </div>
+                                        {/volist}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-11 ml-sm-auto">
+                                    <!-- <button class="btn btn-info" type="submit">现在提交</button> -->
+                                    <button class="btn btn-info" onclick="ajaxRequestAlbum('{:url(\'album/edit\')}','form-sample-1');return false;">现在提交</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- END PAGE CONTENT-->
+            {include file="../application/admin/common/footer.html" /}
+        </div>
+    </div>
+    <!-- BEGIN PAGA BACKDROPS-->
+    <div class="sidenav-backdrop backdrop"></div>
+    <div class="preloader-backdrop">
+        <div class="page-preloader">Loading</div>
+    </div>
+    <!-- END PAGA BACKDROPS-->
+    <!-- CORE PLUGINS-->
+    <script src="__ADMINRES__/vendors/popper.js/dist/umd/popper.min.js" type="text/javascript"></script>
+    <script src="__ADMINRES__/vendors/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="__ADMINRES__/vendors/metisMenu/dist/metisMenu.min.js" type="text/javascript"></script>
+    <script src="__ADMINRES__/vendors/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL PLUGINS-->
+    <script src="__ADMINRES__/vendors/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+    <!-- CORE SCRIPTS-->
+    <script src="__ADMINRES__/js/app.min.js" type="text/javascript"></script>
+    <!-- PAGE LEVEL SCRIPTS-->
+    <script src="__ADMINRES__/js/album.js" type="text/javascript"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>友情链接 | {$conf.WEB_NAME}</title>
+        <meta name="description" content="{$conf.WEB_DESCRIPTION}">
+        <meta name="keywords" content="{$conf.WEB_KEYWORDS}">
+        {include file="../application/index/common/layout.html" /} 
+        
+        <link rel="stylesheet" id="main-style-css" href="__INDEXRES__/css/index.css" type="text/css" media="all">
+    </head>
+    
+    <body class="page-template page-template-template page-template-template-links page-template-templatetemplate-links-php page page-id-308">
+        <!-- 顶部导航栏 start-->
+        {include file="../application/index/common/header.html" /} 
+        <!-- 顶部导航栏 end-->
+        <!-- #top-header -->
+        <style>
+            .entry-content { min-height: 200px; } .links-list { list-style: none;
+            } .links-list>li { width: 33.33%!important; float: left!important; line-height:
+            20px!important; word-break: keep-all; white-space: nowrap; overflow: hidden;
+            text-overflow: ellipsis; } .links-list img { width: 20px; height: 20px;
+            margin-right: 3px; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow:
+            none; border: none; } .links-list a.links { vertical-align: super; border:
+            none!important; } @media screen and (max-width: 660px) { ul.links-list
+            { padding-left: 14px; } .links-list>li { width: 50%!important; } }
+        </style>
+        <header class="banner-bg-header">
+            <h3 class="banner-title">友情链接</h3>
+        </header>
+        <article id="post-308" class="post-308 page type-page status-publish hentry"
+        itemscope="" itemtype="http://schema.org/Article">
+            <!-- 正文 -->
+            <div class="entry-content" itemprop="articleBody">
+                <!-- 文章内容区 -->
+                <h2>友情链接</h2>
+                <ul class="links-list clear-fix">
+                	{volist name="links"  id="link"}
+                    <li>
+                        <img class="no-error" src="https://api.byi.pw/favicon/?url={$link.url}" onerror="onerror=null;src=&#39;https://www.whongbin.cn/default.ico&#39;" >
+                        <a class="links" href="{$link.url}" title="{$link.desc}"
+                        target="_blank" no-jump-page="">{$link.title}</a>
+                    </li>
+		            {/volist}
+                </ul>
+                <h2>旗下网站</h2>
+                <ul class="links-list clear-fix">
+                    <li>
+                        <img class="no-error" src="/whongbin.cn.ico" >
+                        <a class="links" href="/" title="{$conf.WEB_DESCRIPTION}"
+                        target="_blank" no-jump-page="">{$conf.WEB_NAME}</a>
+                    </li>
+                    <li>
+                        <img class="no-error" src="/whongbin.cn.ico">
+                        <a class="links" href="https://wish.whongbin.cn" title="淑尚说（博客）" target="_blank" no-jump-page="">淑尚说（博客）</a>
+                    </li>
+                    <li>
+                        <img class="no-error" src="https://movie.whongbin.cn/favicon.ico">
+                        <a class="links" href="https://movie.whongbin.cn" title="AION小电影" target="_blank" no-jump-page="">AION小电影</a>
+                    </li>
+                </ul>
+                <h2>博客相关</h2>
+                <ul class="links-list clear-fix">
+                    <li>
+                        <img class="no-error" src="/whongbin.cn.ico">
+                        <a class="links" href="https://mkblog.cn/feed/" title="{$conf.WEB_NAME}RSS订阅地址" target="_blank"
+                        no-jump-page="">
+                            RSS 订阅
+                        </a>
+                    </li>
+                    <li>
+                        <img class="no-error" src="/whongbin.cn.ico">
+                        <a class="links" href="/sitemap.html" title="{$conf.WEB_NAME}站点地图"
+                        target="_blank" no-jump-page="">
+                            站点地图
+                        </a>
+                    </li>
+                </ul>
+                <h2>申请友链</h2>
+                <!-- <p class="mk-article-collapse" title="点击查看被隐藏的内容">
+                    <i class="fa fa-chevron-down" aria-hidden="true">
+                    </i>点击查看友链申请要求/方式
+                </p> -->
+                <div class="mk-article-collapse-content clear-fix" hidden="" style="display: block;padding: 0 25px;">
+                    <p><strong>要求</strong></p>
+                    <ul>
+                        <li>博客内容原创为主</li>
+                        <li>博客文章 &gt;= 15 篇且建站时间 &gt;= 6个月</li>
+                        <li>博客内无违法违规内容</li>
+                        <li>博客拥有独立的域名</li>
+                        <li>博主的好基友可以无视上面的所有要求。。</li>
+                    </ul>
+                    <p>如果您的网站满足上述要求，可在下方留言板申请友链。</p>
+                    <p><strong>格式</strong></p>
+                    <ul>
+                        <li>网站地址：</li>
+                        <li>网站名称：</li>
+                        <li>网站描述：</li>
+                    </ul>
+                    <p>
+                        <strong>本站信息</strong>
+                    </p>
+                    <ul>
+                        <li>网站地址：https://www.whongbin.cn/</li>
+                        <li>网站名称：{$conf.WEB_NAME}</li>
+                        <li>网站描述：{$conf.WEB_DESCRIPTION}</li>
+                    </ul>
+                    <p>
+                    </p>
+                </div>
+            </div>
+        </article>
+        <!-- 通用底部 start-->
+        {include file="../application/index/common/footer.html" /}
+        <!-- 通用底部 end-->
+    </body>
+
+</html>

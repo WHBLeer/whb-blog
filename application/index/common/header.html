@@ -1,0 +1,60 @@
+        <nav id="top-navi" class="headroom headroom--not-bottom headroom--pinned headroom--top">
+            <div id="menu-btn">
+                <div class="menu-btn-bar">
+                </div>
+                <div class="menu-btn-bar">
+                </div>
+                <div class="menu-btn-bar">
+                </div>
+            </div>
+            <div class="top-navi-content">
+                <a class="top-navi-logo" href="/" title="{$conf.WEB_DESCRIPTION}" style="line-height:47px;">
+                    <span class="logo">{$conf.WEB_NAME}</span> 
+                    <small class="sub-logo">whongbin.cn</small>
+                </a>
+                <a class="top-navi-search-btn" href="{:url('search/index')}" title="搜索博客内容">
+                    <i class="fa fa-search" aria-hidden="true">
+                    </i>
+                </a>
+                <div class="main-menu">
+                    <ul id="menu-index" class="menu">
+                        <li id="menu-item-0" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-0">
+                            <a href="/">首页</a>
+                        </li>
+                        <li id="menu-item-1" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1">
+                            <a href="javascript:void(0);" >文章</a>
+                            <ul class="sub-menu">
+                                {volist name="cateres" id="vo"}
+                                <li id="menu-item-{$vo.id}{$vo.id}" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-{$vo.id}{$vo.id}">
+                                    <a title="{$vo.catename}" href="{:url('cate/index',array('id'=>$vo.id))}">{$vo.catename}</a>
+                                </li>
+                                {/volist} 
+                            </ul>
+                        </li>
+                        <li id="menu-item-2" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2">
+                            <a href="{:url('words/index')}" >碎语</a>
+                        </li>
+                        <!-- <li id="menu-item-1203" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1203">
+                            <a href="{:url('tags/index')}">标签</a>
+                        </li> -->
+                        <li id="menu-item-3" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3">
+                            <a href="{:url('link/index')}">友链</a>
+                        </li>
+                        <li id="menu-item-4" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4">
+                            <a href="javascript:void(0);" >关于</a>
+                            <ul class="sub-menu">
+                                <li id="menu-item-01" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-01">
+                                    <a title="关于我" href="{:url('about/index')}">关于我</a>
+                                </li>
+                                <li id="menu-item-02" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-02">
+                                    <a title="RESUME" href="{:url('about/resume')}">RESUME</a>
+                                </li>
+                                <li id="menu-item-03" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-03">
+                                    <a title="滑稽泛滥" href="{:url('about/skin')}">慎点！！！</a>
+                                </li>
+                            </ul>
+                        </li>                        
+                    </ul>
+                </div>
+            </div>
+        </nav>

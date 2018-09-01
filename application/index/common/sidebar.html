@@ -1,0 +1,249 @@
+
+<aside class="sidebar">
+    <div class="fenlei">
+        <ul class="flnav">
+            <li class="flselect">
+                <a href="#" title="最新文章" class="pall">
+                </a>
+            </li>
+            <li>
+                <a href="#" title="站长推荐" class="pgood">
+                </a>
+            </li>
+            <li>
+                <a href="#" title="点击排行" class="pbro">
+                </a>
+            </li>
+            <li>
+                <a href="#" title="头条关注" class="pfav">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="newstw">
+        <ul class="sidenews">
+            <h2>
+                最新文章
+            </h2>
+            {volist name="toping"  id="top"}
+            <li>
+                <i>
+                    <img data-original="{$top.pic}"
+                        src="{$top.pic}" alt="{$top.title}" />
+                </i>
+                <p>
+                    <a title="{$top.title}" href="{:url('index/Article/show',array('id'=>$vo['id']))}">{$top.title}</a>
+                </p>
+                <span>{$top.time|date="Y-m-d",###}</span>
+            </li>
+            {/volist}
+        </ul>
+        <ul class="sidenews">
+            <h2>
+                站长推荐
+            </h2>
+            {volist name="toping"  id="top"}
+            <li>
+                <i>
+                    <img data-original="{$top.pic}"
+                        src="{$top.pic}" alt="{$top.title}" />
+                </i>
+                <p>
+                    <a title="{$top.title}" href="{:url('index/Article/show',array('id'=>$vo['id']))}">{$top.title}</a>
+                </p>
+                <span>{$top.time|date="Y-m-d",###}</span>
+            </li>
+            {/volist}
+        </ul>
+        <ul class="sidenews">
+            <h2>
+                点击排行
+            </h2>
+            {volist name="toping"  id="top"}
+            <li>
+                <i>
+                    <img data-original="{$top.pic}"
+                        src="{$top.pic}" alt="{$top.title}" />
+                </i>
+                <p>
+                    <a title="{$top.title}" href="{:url('index/Article/show',array('id'=>$vo['id']))}">{$top.title}</a>
+                </p>
+                <span>{$top.time|date="Y-m-d",###}</span>
+            </li>
+            {/volist}
+        </ul>
+        <ul class="sidenews">
+            <h2>
+                头条关注
+            </h2>
+            {volist name="toping"  id="top"}
+            <li>
+                <i>
+                    <img data-original="{$top.pic}"
+                        src="{$top.pic}" alt="{$top.title}" />
+                </i>
+                <p>
+                    <a title="{$top.title}" href="{:url('index/Article/show',array('id'=>$vo['id']))}">{$top.title}</a>
+                </p>
+                <span>{$top.time|date="Y-m-d",###}</span>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+    <div class="ad">
+        <img src="__INDEXRES__/images/7.jpg">
+    </div>
+    <div class="about">
+        <h2 class="hometitle">关于本站</h2>
+        <ul>
+            <div class="avatar">
+                <img src="__INDEXRES__/images/tx.png" alt="">
+            </div>
+            <p class="abname">
+                dancesmile | 杨青
+            </p>
+            <p class="abtext">
+                一个80后草根女站长！09年入行。一直潜心研究web前端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。
+            </p>
+            <li>
+                <a class="xlwb" href="#" target="_blank">
+                </a>
+            </li>
+            <li>
+                <a class="txqq" href="" target="_blank">
+                </a>
+            </li>
+            <li>
+                <a class="rss" href="" target="_blank">
+                </a>
+            </li>
+            <li class="wxpic">
+                <a class="wx" href="">
+                </a>
+                <img src="__INDEXRES__/images/grwx.png">
+            </li>
+        </ul>
+    </div>
+    <div class="tjlm">
+        <h2 class="hometitle">
+            推荐栏目
+        </h2>
+        <ul>
+            <li>
+                <a href="about.html">
+                    关于我
+                </a>
+            </li>
+            <li>
+                <a href="share.html">
+                    模板分享
+                </a>
+            </li>
+            <li>
+                <a href="list.html">
+                    博客日记
+                </a>
+            </li>
+            <li>
+                <a href="info.html">
+                    慢生活
+                </a>
+            </li>
+            <li>
+                <a href="time.html">
+                    时间轴
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    美文欣赏
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="tpjx">
+        <h2 class="hometitle">
+            图片精选
+        </h2>
+        <ul>
+            <li>
+                <a href="#">
+                    <i>
+                        <img src="__INDEXRES__/images/1.jpg">
+                    </i>
+                    <span>
+                        个人博客，属于我的小世界！
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <img src="__INDEXRES__/images/2.jpg">
+                    </i>
+                    <span>
+                        个人博客，属于我的小世界！
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <img src="__INDEXRES__/images/3.jpg">
+                    </i>
+                    <span>
+                        个人博客，属于我的小世界！
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <img src="__INDEXRES__/images/4.jpg">
+                    </i>
+                    <span>
+                        个人博客，属于我的小世界！
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <img src="__INDEXRES__/images/5.jpg">
+                    </i>
+                    <span>
+                        个人博客，属于我的小世界！
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i>
+                        <img src="__INDEXRES__/images/6.jpg">
+                    </i>
+                    <span>
+                        个人博客，属于我的小世界！
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="links">
+        <h2 class="hometitle">
+            友情链接
+        </h2>
+        <ul>
+            {volist name="links"  id="link"}
+            <li>
+                <a href="{$link.url}" title="{$link.title}" target="_blank">
+                    <img src="//www.google.com/s2/favicons?domain={$link.url}" alt="{$link.desc}" style="vertical-align: middle;display: inline-block;margin-top: -3px;" /> {$link.title}
+                </a>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+    <!-- 广告 -->
+    <!-- <div class="ad">
+        <img src="__INDEXRES__/images/8.jpg">
+    </div> -->
+</aside>

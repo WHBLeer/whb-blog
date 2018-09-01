@@ -1,0 +1,43 @@
+        <footer id="site-footer">
+            <span>Copyright © 2018 whongbin.cn 保留所有版权 | <a href="http://www.miitbeian.gov.cn/" target="_blank">{$conf.WEB_ICP_NUMBER}</a> | {$conf.WEB_STATISTICS} <a href="https://gitee.com/TYPO3_GO" rel="nofollow" target="_blank" title="Gitee" style="opacity: 0.5"><img src="https://api.byi.pw/favicon/?url=https://gitee.com/TYPO3_GO"></a> <a href="https://github.com/WHBLeer" rel="nofollow" target="_blank" title="GitHub" style="opacity: 0.5"><img src="https://api.byi.pw/favicon/?url=https://github.com/WHBLeer"></a></span>
+            <p>本站[<a href="/">{$conf.WEB_NAME}</a>]的部分内容来源于网络，若侵犯到您的权益，请联系站长删除！谢谢！邮箱：<a href="mailto:{$conf.ADMIN_EMAIL}">{$conf.ADMIN_EMAIL}</a></p>  
+        </footer>
+        <!-- 返回顶部按钮 -->
+        <div id="scroll-to-top" title="返回顶部" class="headroom headroom--not-bottom headroom--pinned headroom--top">
+            <i class="fa fa-chevron-up" aria-hidden="true">
+            </i>
+        </div>
+        <script type="text/javascript">
+        // <!-- 初始化小表情、灯箱、代码高亮 -->
+        initTheme();
+        $(window).on('load', function() {
+            $("#menu-index a").each(function(){
+                if($(this)[0].href==String(window.location)){
+                    // 二级菜单添加选中
+                    if ($(this).parent('li').parent('ul').hasClass("sub-menu")) {
+                        $(this).parent('li').parent('ul').parent('li').children('a').addClass("active");
+                    }
+
+                    // 一级菜单添加选中
+                    if ($(this).parent('li').parent('ul').hasClass("menu")) {
+                        $(this).addClass("active");
+                    }
+                }  
+            });
+        });
+        </script>
+        <script>(function(T,h,i,n,k,P,a,g,e){g=function(){P=h.createElement(i);a=h.getElementsByTagName(i)[0];P.src=k;P.charset="utf-8";P.async=1;a.parentNode.insertBefore(P,a)};T["ThinkPageWeatherWidgetObject"]=n;T[n]||(T[n]=function(){(T[n].q=T[n].q||[]).push(arguments)});T[n].l=+new Date();if(T.attachEvent){T.attachEvent("onload",g)}else{T.addEventListener("load",g,false)}}(window,document,"script","tpwidget","//widget.seniverse.com/widget/chameleon.js"))</script>
+        <script>tpwidget("init", {
+            "flavor": "bubble",
+            "location": "WQGDF7NXZRZB",
+            "geolocation": "enabled",
+            "position": "bottom-left",
+            "margin": "10px 10px",
+            "language": "zh-chs",
+            "unit": "c",
+            "theme": "white",
+            "uid": "U7E0CAE1C5",
+            "hash": "58f455f9c5b645ee7b36a3148ce2c23e"
+        });
+        tpwidget("show");</script>
+        {$conf.BAIDU_SITE_URL}

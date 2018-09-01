@@ -1,0 +1,26 @@
+<li class="comment byuser comment-author-###NICKNAME#### bypostauthor even depth-2 parent" id="comment-###ID###" data-no-instant="">
+    <div id="div-comment-###ID###" class="comment-body">
+        <div class="comment-avatar-area">
+            <img alt="###NICKNAME####" src="###AVATAR###" class="no-error avatar avatar-50 photo" height="50" width="50">
+        </div>
+        <div class="comment-content-area">
+            <div class="comment-content-user">
+                <span class="comment-auth">###NICKNAME####</span>
+                <span class="level level-###LV###" title="###LEVEL###">###LEVEL###</span>
+            </div>
+            <div class="comment-content-text">
+                <p>
+                    <a class="comment-at" href="#comment-###PARENTID###">@###PARENTNAME###</a>
+                    ###COMMENT###
+                </p>
+            </div>
+            <div class="comment-content-info" data-no-instant="">
+                <span>###TIME###</span>
+                <span>
+                    <a rel="nofollow" class="comment-reply-link" onclick="return addComment.moveForm( &quot;div-comment-###ID###&quot;, &quot;###ID###&quot;, &quot;respond&quot;, &quot;###ARTICLE###&quot; )"
+                    aria-label="回复给###NICKNAME####">回复</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</li>

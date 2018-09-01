@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>碎言 | {$conf.WEB_NAME}</title>
+        <meta name="description" content="{$conf.WEB_DESCRIPTION}">
+        <meta name="keywords" content="{$conf.WEB_KEYWORDS}">
+        {include file="../application/index/common/layout.html" /} 
+        
+        <link rel="stylesheet" href="__INDEXRES__/css/index.css" type="text/css" media="all">
+        <link rel="stylesheet" href="__INDEXRES__/css/shuoshuo.css" type="text/css" media="all">
+    </head>
+    
+    <body class="page-template page-template-template page-template-template-shuoshuo page-template-templatetemplate-shuoshuo-php page page-id-814">
+        <!-- 顶部导航栏 start-->
+        {include file="../application/index/common/header.html" /} 
+        <!-- 顶部导航栏 end-->
+        <!-- #top-header -->
+        <ul class="shuoshuo-list width-short clear-fix">
+        	{volist name="words"  id="word"}
+            <li class="clear-fix">
+                <img alt="" src="" class="no-error avatar avatar-50 photo" height="50" width="50" onerror="onerror=null;src=&#39;https://www.whongbin.cn/whongbin.cn.ico&#39;">
+                <div class="shuoshuo-content">
+                    <div class="shuoshuo-content-inner">
+                        <p>{$word.content}</p>
+                        <div class="shuoshuo-info">
+                            <span name="发表时间">
+                                <i class="fa fa-calendar" aria-hidden="true"></i> {$word.time|word_time}
+                            </span>
+                            <span name="作者">
+                                <i class="fa fa-user" aria-hidden="true"></i> 
+                                {$word.author}
+                            </span>
+                        </div>
+                    </div>
+                    <!-- .shuoshuo-content-inner -->
+                </div>
+            </li>
+            {/volist}
+        </ul>
+        <!-- .shuoshuo-list -->
+        <!-- 说说分页 -->
+        {$words->render()}
+
+        <!-- 通用底部 start-->
+        {include file="../application/index/common/footer.html" /}
+        <!-- 通用底部 end-->
+    </body>
+
+</html>

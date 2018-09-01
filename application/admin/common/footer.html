@@ -1,0 +1,22 @@
+
+            <footer class="page-footer">
+                <div class="font-13">2018 © <b>whongbin.cn</b> - 版权所有.</div>
+                <a class="px-4" href="/" target="_blank">HOME PAGE</a>
+                <div class="to-top"><i class="fa fa-angle-double-up"></i></div>
+            </footer>
+<script type="text/javascript">
+$(window).on('load', function() {
+	$("#side-menu a").each(function(){
+		if($(this)[0].href==String(window.location)){
+			if ($(this).parent('li').parent('ul').prop('className').split(' ')[0] == 'nav-2-level') {
+				$(this).parent('li').parent('ul').addClass("in");
+				$(this).parent('li').parent('ul').parent('li').addClass("active");
+			}
+			if ($(this).parent('li').parent('ul').prop('className').split(' ')[0] == 'side-menu') {
+				$(this).parent('li').addClass("active");
+			}
+			$(this).addClass("active");
+		}  
+	});
+});
+</script>

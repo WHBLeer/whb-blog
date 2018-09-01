@@ -1,0 +1,110 @@
+<link rel='shortcut icon' href='/whongbin.cn.ico'> 
+<link rel='shortcut' href='/whongbin.cn.ico' /> 
+<link href='/whongbin.cn.ico' rel='shortcut icon'>
+<link href="__ADMINRES__/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="__ADMINRES__/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" /> 
+<link href="__ADMINRES__/vendors/themify-icons/css/themify-icons.css" rel="stylesheet" />
+<link href="__ADMINRES__/css/main.css" rel="stylesheet" />
+<script type="text/javascript" src="__ADMINRES__/vendors/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/static/admin/layer/layer.js"></script>
+<script type="text/javascript">
+
+$(function () {
+    $('body').addClass('fixed-layout');
+    $('#sidebar-collapse').slimScroll({
+        height: '100%',
+        railOpacity: '0.9',
+    });
+});
+//清除缓存
+function clearPhp(obj) {
+    var url=obj.getAttribute('data-GetUrl');
+    //询问框
+    layer.confirm('你确定要清除缓存吗？', {icon: 3, title:'提示'},
+    function(){
+        $.get(url,function(info){
+            if(info.code === 1){
+                setTimeout(function () {location.href = info.url;}, 1000);
+            }
+            layer.msg(info.msg,{icon:1});
+        });
+    },
+    function(){});
+}
+
+// ajax提交数据
+function ajaxRequest(url,formid) {
+    var data = $("#"+formid).serialize();
+    $.post(url,data,function(info){
+        console.log(info)
+        if(info.code === 1){
+            // 提交成功
+            setTimeout(function () {location.href = info.url;}, 1000);
+            layer.msg(info.msg,{icon:6});
+        }else{
+            // 提交失败
+            layer.msg(info.msg,{icon:5});
+        }
+    });
+}
+
+// ajax提交数据
+function ajaxCheck(url) {
+    $.post(url,function(info){
+        console.log(info);
+        if(info.code === 1){
+            // 提交成功
+            setTimeout(function () {location.href = info.url;}, 1000);
+            layer.msg(info.msg,{icon:1});
+        }else{
+            // 提交失败
+            layer.msg(info.msg,{icon:2});
+        }
+    });
+}
+
+// ajax提交数据
+function ajaxRequestImg(url,formid,imgid) {
+    var form = document.getElementById(formid);   
+    var file_obj = document.getElementById(imgid).files[0];
+    var formData =new FormData(form);  
+    formData.append("pic", file_obj); 
+    $.ajax({
+        url : url,  
+        type : 'POST',  
+        data : formData,  
+        processData: false,  // 告诉jQuery不要去处理发送的数据  
+        contentType: false,  // 告诉jQuery不要去设置Content-Type请求头  
+        dataType:'json',          
+        success:function(info){  
+            console.log(info)
+            if(info.code === 1){
+                // 提交成功
+                setTimeout(function () {location.href = info.url;}, 1000);
+                layer.msg(info.msg,{icon:6});
+            }else{
+                // 提交失败
+                layer.msg(info.msg,{icon:5});
+            }
+        } 
+    })
+}
+// ajax删除数据
+function ajaxDelete(url) {
+    //询问框
+    layer.confirm('你确定要删除吗？', {icon: 3, title:'提示'},
+    function(){
+        $.get(url,function(info){
+            if(info.code === 1){
+                // 提交成功
+                setTimeout(function () {location.href = info.url;}, 1000);
+                layer.msg(info.msg,{icon:1});
+            }else{
+                // 提交失败
+                layer.msg(info.msg,{icon:2});
+            }
+        });
+    },
+    function(){});
+}
+</script>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>{$conf.WEB_NAME}</title>
+        <meta name="description" content="{$conf.WEB_DESCRIPTION}">
+        <meta name="keywords" content="{$conf.WEB_KEYWORDS}">
+        <meta name="baidu_ssp_verify" content="94b717c8c833e34d36ff84301558aa19">
+        {include file="../application/index/common/layout.html" /} 
+        
+        <link rel="canonical" href="{:url('index')}">
+        <link rel="stylesheet" id="main-style-css" href="__INDEXRES__/css/index.css" type="text/css" media="all">
+    </head>
+    
+    <body class="home blog">
+        <!-- 顶部导航栏 start-->
+        {include file="../application/index/common/header.html" /} 
+        <!-- 顶部导航栏 end-->
+        <!-- #top-header -->
+        <main id="main" class="site-main" role="main">
+            <!-- 博文列表区 -->
+            <section id="post-lists" class="clear-fix">
+                <!-- 列表头广告 -->
+                {volist name="articleres" id="article"}
+                <article id="post-{$article.id}">
+                    <div class="post-item-card image-shadow">
+                        <div class="post-item-card-body">
+                            <a href="{:url('index/Article/detail',array('id'=>$article['id']))}" class="item-thumb">
+                                <figure class="thumbnail" style="background-image:url({$article.pic});">
+                                </figure>
+                                <div class="archive-content">{$article.desc}</div>
+                            </a>
+                            <header class="entry-header">
+                                <h2 class="entry-title">
+                                    <a href="{:url('index/Article/detail',array('id'=>$article['id']))}">【{$article.catename}】 {$article.title}</a>
+                                </h2>
+                                <span class="entry-meta">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>{$article.time|word_time}
+                                    <!-- <i class="fa fa-calendar" aria-hidden="true"></i>{$article.time|word_time="Y-m-d",###} -->
+                                    <i class="fa fa-eye" aria-hidden="true"></i>{$article.click}
+                                    <a href="{:url('index/Article/detail',array('id'=>$article['id']))}#comment" class="-"><i class="fa fa-comments" aria-hidden="true"></i> {$article.id|comment_total}</a>
+                                </span>
+                            </header>
+                            <!-- .entry-header -->
+                        </div>
+                        <!-- #post-item-card-body -->
+                    </div>
+                    <!-- #post-item-card -->
+                </article>
+                <!-- #post -->
+                {/volist}
+                <!-- 列表尾广告 -->
+            </section>
+            <!-- .post-lists -->
+            <!-- 页码 -->
+            {$articleres->render()}
+        </main>
+        <!-- .site-main -->
+        
+        <!-- 通用底部 start-->
+        {include file="../application/index/common/footer.html" /}
+        <!-- 通用底部 end-->
+    </body>
+</html>

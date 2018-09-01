@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>搜索站内 | {$conf.WEB_NAME}</title>
+        <meta name="description" content="{$conf.WEB_DESCRIPTION}">
+        <meta name="keywords" content="{$conf.WEB_KEYWORDS}">
+        {include file="../application/index/common/layout.html" /} 
+        
+        <link rel="stylesheet" id="main-style-css" href="__INDEXRES__/css/index.css" type="text/css" media="all">
+    </head>
+    
+    <body class="page-template page-template-template page-template-template-links page-template-templatetemplate-links-php page page-id-308">
+        <!-- 顶部导航栏 start-->
+        {include file="../application/index/common/header.html" /} 
+        <!-- 顶部导航栏 end-->
+        <!-- #top-header -->
+        <style>
+            .search-form { margin: 28px auto; } /* 搜索标签区域 */ 
+            .search-tags { padding:15px; margin-bottom: 10px; } 
+            .search-tags label { display: inline-block;margin: 0 5px 10px 0; font-size: 13px; } 
+            .search-tags .fa { color: #b3b2b2;} 
+            .search-tags .links { border: none; margin-left: 2px; }
+        </style>
+        <header class="banner-bg-header">
+			{if condition="$keywords"}
+            <h4 class="banner-title" style="font-size: 20px;">查询到 <b>{$keywords}</b> 相关内容共 <b>{$searchres|count}</b> 条 </h4>
+			{else /}
+            <h3 class="banner-title">搜索站内内容</h3>
+			{/if}
+			<h5 class="banner-sub-title">查询项：文章标题，关键字，文章内容</h5>
+        </header>
+		<main id="main" class="site-main" role="main">
+	        <section class="width-short">
+	            <!-- 搜索框 -->
+	            <div class="search-form">
+	                <form id="search" class="mk-side-form" method="get" action="" role="search" >
+	                    <input type="text" id="wp_search" name="keywords" required="true" placeholder="Search..." maxlength="30" autocomplete="off" title="{if condition="$keywords neq ''"}搜索关键字：{$keywords}{else /}你想找什么？{/if}" value="{$keywords}">
+	                    <button type="submit">搜搜看</button>
+	                </form>
+	            </div>
+	            <!-- 标签 -->
+	            <fieldset class="search-tags">
+	                <legend>关键字 {$words|count}个</legend>
+	                <label>
+	                	{volist name="words" id="word"}
+		                    <i class="fa fa-tag" aria-hidden="true"></i>
+		                    <a class="links" href="{:url('search/index')}?keywords={$word}">{$word}</a>
+	                	{/volist}
+	                </label>
+	            </fieldset>
+	            <!-- 博文列表区 -->
+	            <section id="post-lists" class="clear-fix">
+                {volist name="searchres" id="vo"}
+	                <article id="post-{$vo.id}">
+	                    <div class="post-item-card image-shadow">
+	                        <div class="post-item-card-body">
+	                            <a href="{:url('index/Article/detail',array('id'=>$vo['id']))}" class="item-thumb">
+	                                <figure class="thumbnail" style="background-image:url({$vo.pic});">
+	                                </figure>
+	                                <div class="archive-content">{$vo.desc}</div>
+	                            </a>
+	                            <header class="entry-header">
+	                                <h2 class="entry-title">
+	                                    <a href="{:url('index/Article/detail',array('id'=>$vo['id']))}">{$vo.title}</a>
+	                                </h2>
+	                                <span class="entry-meta">
+	                                    <i class="fa fa-calendar" aria-hidden="true"></i>{$vo.time|word_time}
+	                                    <!-- <i class="fa fa-calendar" aria-hidden="true"></i>{$vo.time|word_time="Y-m-d",###} -->
+	                                    <i class="fa fa-eye" aria-hidden="true"></i>{$vo.click}
+	                                    <a href="{:url('index/Article/detail',array('id'=>$vo['id']))}#comment" class="-"><i class="fa fa-comments" aria-hidden="true"></i> {$vo.id|comment_total}</a>
+	                                </span>
+	                            </header>
+	                            <!-- .entry-header -->
+	                        </div>
+	                        <!-- #post-item-card-body -->
+	                    </div>
+	                    <!-- #post-item-card -->
+	                </article>
+	                <!-- #post -->
+                {/volist}
+	            </section>
+	            <!-- 页码 -->
+	            {if condition="$searchres"}
+				{$searchres->render()}
+	            {/if}
+	        </section>
+		</main>
+        <!-- 通用底部 start-->
+        {include file="../application/index/common/footer.html" /}
+        <!-- 通用底部 end-->
+    </body>
+
+</html>
